@@ -43,8 +43,32 @@ export class FlightsListPage {
       });
   }
 
-  sortByArrival() {
-    this.flights.sort((a, b) => (a.arrival.iataCode > b.arrival.iataCode) ? 1 : ((b.arrival.iataCode > a.arrival.iataCode) ? -1 : 0)); 
+  sortBy(key: string) {
+    switch (key) {
+      case 'departure':
+          this.flights.sort((a, b) => (a.departure.iataCode > b.departure.iataCode) ? 1 : ((b.departure.iataCode > a.departure.iataCode) ? -1 : 0)); 
+        break;
+
+      case 'arrival':
+          this.flights.sort((a, b) => (a.arrival.iataCode > b.arrival.iataCode) ? 1 : ((b.arrival.iataCode > a.arrival.iataCode) ? -1 : 0)); 
+        break;
+
+
+      case 'departure.scheduledTime':
+          this.flights.sort((a, b) => (a.departure.scheduledTime > b.departure.scheduledTime) ? 1 : ((b.departure.scheduledTime > a.departure.scheduledTime) ? -1 : 0)); 
+        break;
+
+      case 'arrival.scheduledTime':
+          this.flights.sort((a, b) => (a.arrival.scheduledTime > b.arrival.scheduledTime) ? 1 : ((b.arrival.scheduledTime > a.arrival.scheduledTime) ? -1 : 0)); 
+        break;
+
+      case 'status':
+          this.flights.sort((a, b) => (a.status > b.status) ? 1 : ((b.status > a.status) ? -1 : 0)); 
+        break;
+    
+      default:
+        break;
+    }
   }
 
 
