@@ -7,9 +7,8 @@ import 'rxjs/add/operator/map';
 @Injectable()
 export class FlightsService {
 
-    flights: Flight[];
 
-    dataApi: any[];
+    dataApi: Flight[];
 
     apiKey: string = "700da2-030cc0";
     iataCode: string = "LYS";

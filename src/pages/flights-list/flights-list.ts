@@ -3,7 +3,6 @@ import { NavController, NavParams } from 'ionic-angular';
 
 import { FlightsService } from '../../services/flightsService.service';
 import { Flight } from '../../models/Flight';
-import { Observable } from 'rxjs/Observable';
 
 /**
  * Generated class for the FlightsListPage page.
@@ -36,10 +35,9 @@ export class FlightsListPage {
   loadFlights() {
     //this.flights = this.flightsService.flights;
 
-    this.flightsService.loadDataFromAPI()
+    this.flightsService.loadDataFromAPI() // attente des données
       .then(data => {
         this.flights = data;
-        console.log(data)
       });
   }
 
@@ -52,7 +50,6 @@ export class FlightsListPage {
       case 'arrival':
           this.flights.sort((a, b) => (a.arrival.iataCode > b.arrival.iataCode) ? 1 : ((b.arrival.iataCode > a.arrival.iataCode) ? -1 : 0)); 
         break;
-
 
       case 'departure.scheduledTime':
           this.flights.sort((a, b) => (a.departure.scheduledTime > b.departure.scheduledTime) ? 1 : ((b.departure.scheduledTime > a.departure.scheduledTime) ? -1 : 0)); 

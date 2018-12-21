@@ -16,14 +16,16 @@
 <ion-content padding>
 
   <button ion-button (click)="sortBy('departure')">Tri par départ</button>
-  <button ion-button (click)="sortBy('departure')">Tri par heure de départ</button>
+  <button ion-button (click)="sortBy('departure.scheduledTime')">Tri par heure de départ</button>
   
   <button ion-button (click)="sortBy('arrival')">Tri par arrivée</button>
-  <button ion-button (click)="sortBy('arrival')">Tri par heure d'arrivée</button>
+  <button ion-button (click)="sortBy('arrival.scheduledTime')">Tri par heure d'arrivée</button>
   
   <button ion-button (click)="sortBy('status')">Tri par status</button>
 
-  <ion-card *ngFor="let f of flights">
+  <ion-card *ngFor="let f of flights" class="primary"
+  
+  >
     <ion-card-header>
       <ion-row no-padding>
         <ion-col text-left>
