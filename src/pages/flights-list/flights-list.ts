@@ -34,7 +34,6 @@ export class FlightsListPage {
    * Ce que je dois faire lorsque la page s'affiche
    */
   loadFlights() {
-
     //this.flights = this.flightsService.flights;
 
     this.flightsService.loadDataFromAPI()
@@ -42,7 +41,10 @@ export class FlightsListPage {
         this.flights = data;
         console.log(data)
       });
+  }
 
+  sortByArrival() {
+    this.flights.sort((a, b) => (a.arrival.iataCode > b.arrival.iataCode) ? 1 : ((b.arrival.iataCode > a.arrival.iataCode) ? -1 : 0)); 
   }
 
 
