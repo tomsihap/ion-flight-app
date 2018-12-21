@@ -15,4 +15,48 @@
 
 <ion-content padding>
 
+  <ion-card *ngFor="let f of flights">
+    <ion-card-header>
+      <ion-row no-padding>
+        <ion-col text-left>
+          <p>
+            <ion-icon name='plane'></ion-icon> {{ f.departure.iataCode }} - {{ f.arrival.iataCode }}
+            <small></small>
+          </p>
+        </ion-col>
+        <ion-col text-right>
+          <p>
+            <ion-icon name='walk'></ion-icon> {{ f.departure.terminal }}
+          </p>
+        </ion-col>
+      </ion-row>
+    </ion-card-header>
+
+    <ion-card-content>
+      <p>
+        <ion-icon name='arrow-forward'></ion-icon> Heure de départ : {{ f.departure.scheduledTime | date : 'HH:mm - dd
+        MMM
+        y' }}
+      </p>
+      <p>
+        <ion-icon name='arrow-back'></ion-icon> Heure d'arrivée : {{ f.arrival.scheduledTime | date : 'HH:mm - dd MMM
+        y' }}
+      </p>
+    </ion-card-content>
+    <ion-row no-padding>
+      <ion-col>
+        <button ion-button clear small color="danger" icon-start>
+          <ion-icon name='star'></ion-icon>
+          Favorite
+        </button>
+      </ion-col>
+      <ion-col text-right>
+        <button ion-button clear small color="danger" icon-start (click)="onLoadFlight()">
+          <ion-icon name='share-alt'></ion-icon>
+          Voir plus
+        </button>
+      </ion-col>
+    </ion-row>
+  </ion-card>
+
 </ion-content>

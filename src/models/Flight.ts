@@ -3,9 +3,9 @@ export class Flight {
     type: string;
     status: string;
     departure: { 
-        iataCode?: string,
-        icaoCode?: string,
-        terminal?: string,
+        iataCode: string,
+        icaoCode: string,
+        terminal: string,
         gate?: string,
         delay?: number,
         scheduledTime?: string,

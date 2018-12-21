@@ -1,6 +1,10 @@
 import { Component } from '@angular/core';
 import { NavController, NavParams } from 'ionic-angular';
 
+import { FlightsService } from '../../services/flightsService.service';
+import { Flight } from '../../models/Flight';
+import { Observable } from 'rxjs/Observable';
+
 /**
  * Generated class for the FlightsListPage page.
  *
@@ -14,11 +18,32 @@ import { NavController, NavParams } from 'ionic-angular';
 })
 export class FlightsListPage {
 
-  constructor(public navCtrl: NavController, public navParams: NavParams) {
+  flights: Flight[];
+  
+  /**
+   * Ce que je dois faire pour construire la page 
+   */
+  constructor(public navCtrl: NavController, 
+              public navParams: NavParams,
+              public flightsService: FlightsService) {
+
+      this.loadFlights();
   }
 
-  ionViewDidLoad() {
-    console.log('ionViewDidLoad FlightsListPage');
+  /**
+   * Ce que je dois faire lorsque la page s'affiche
+   */
+  loadFlights() {
+
+    //this.flights = this.flightsService.flights;
+
+    this.flightsService.loadDataFromAPI()
+      .then(data => {
+        this.flights = data;
+        console.log(data)
+      });
+
   }
+
 
 }
